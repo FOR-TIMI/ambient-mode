@@ -1,0 +1,63 @@
+:root {
+  --color-background: #282828;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: var(--color-background);
+}
+
+.video-wrapper {
+  margin: 0 auto;
+  position: relative; /* Contains the absolute positioning */
+  padding: 7rem;
+}
+
+.main {
+  display: flex;
+}
+
+.video,
+.canvas {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+}
+
+.canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Place the canvas in a lower stacking level */
+  width: 100%;
+  height: 100%;
+  opacity: 0.4; /* Subtle transparency */
+}
+
+.video {
+  border-radius: 70px;
+  border: 5px solid transparent;
+  border-radius: 15px;
+}
+
+.video-wrapper::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-image: radial-gradient(
+    circle at center,
+    transparent,
+    var(--color-background)
+  );
+  pointer-events: none; /* Ensures it won't interfere with mouse events on the canvas */
+  z-index: 1;
+}
